@@ -25,7 +25,9 @@ and what you should write is the sayHi function that makes the code above work,
 
 
   //Code Here for first
-  
+var first = function(str, cb) {
+  cb(str[0]);
+}  
 
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 first(names, function(firstName){
@@ -40,6 +42,10 @@ first(names, function(firstName){
 
 
   //Code Here for last
+
+  var last = function(str, cb) {
+    cb(str[str.length - 1]);
+  }
 
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -58,6 +64,10 @@ last(names, function(lastName){
 
   //Code Here for multiply
 
+var multiply = function(num1, num2, cb) {
+  cb(num1 * num2);
+}
+
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
 })
@@ -73,6 +83,17 @@ multiply(4, 3, function(answer){
 
 
   //Code Here for contains
+
+var contains = function(str, name, cb) {
+  for (var i = 0; i < str.length; i++) {
+    if (str[i] === name) {
+      cb(true);
+    }
+    else {
+      cb(false);
+    }
+ }
+}
 
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -93,6 +114,17 @@ contains(names, 'Colt', function(result){
 
     //Code Here for uniq
 
+var uniq = function(str, cb) {
+  var newArr = [];
+  for (var i = 0; i < str.length; i++) {
+    if (newArr.indexOf(str[i]) === -1) {
+      newArr.push(str[i])
+    }
+
+  }
+  cb(newArr)
+}
+
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
@@ -107,6 +139,12 @@ uniq(names, function(uniqArr){
 
 
     //Code Here for each
+
+var each = function(str, cb) {
+  for (var i = 0; i < str.length; i++) {
+    cb(str[i], i)
+  }
+}
 
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -123,6 +161,14 @@ each(names, function(item, indice){
 
 
  //code here for getUserById
+
+ var getUserById = function(str, id, cb) {
+  for (var i = 0; i < str.length; i++) {
+    if (str[i].id === id) {
+      cb(str[i])
+    }  
+  }
+ }
 
 var users = [
   {
